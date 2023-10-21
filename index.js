@@ -6,7 +6,6 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // middlewere
-// app.use(cors());
 app.use(express.json());
 const corsConfig = {
     origin: '*',
@@ -27,8 +26,6 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         // await client.connect();
-
-
         // await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally { }
@@ -62,7 +59,6 @@ app.get('/details/:id', async (req, res) => {
     const user = await phoneCollation.findOne(query);
     res.send(user)
 })
-
 // data updata single 
 app.put('/update/:id', async (req, res) => {
     const id = req.params.id;
